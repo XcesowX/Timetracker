@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title data-i18n="jrn_title">Nhật ký log time</title><link rel="stylesheet" href="ui.css"></head>
+<body class="page">
+  <header class="bar">
+    <h1 data-i18n="jrn_title">Nhật ký log time</h1>
+    <div class="tools">
+      <label><span data-i18n="jrn_date_label">Ngày</span> <select id="day"></select></label>
+      <button id="csv" data-i18n="jrn_btn_csv">Xuất CSV</button>
+      <button id="options" class="ghost" data-i18n="jrn_btn_options">Setting</button>
+    </div>
+  </header>
+  <main>
+    <p class="lead" id="tlLead"></p>
+    <div class="split-view">
+      <section class="split-col">
+        <h2 data-i18n="jrn_timeline_title">Dòng thời gian</h2>
+        <div class="tablewrap"><table id="tl">
+          <thead><tr>
+            <th data-i18n="jrn_th_start">Start time</th>
+            <th data-i18n="jrn_th_end">End time</th>
+            <th data-i18n="jrn_th_order">Order</th>
+            <th data-i18n="jrn_th_duration">Time</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </section>
+      <section class="split-col">
+        <h2 data-i18n="jrn_tour_summary_title">Tổng kết theo tour</h2>
+        <div class="tablewrap"><table id="tourSum">
+          <thead><tr>
+            <th style="width:180px" data-i18n="jrn_th_tour">Tour</th>
+            <th data-i18n="jrn_th_intervals">Các khoảng thời gian thực hiện</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </section>
+    </div>
+    <details class="more">
+      <summary data-i18n="jrn_more">Tổng theo order, cảnh báo và sự kiện khác</summary>
+      <h2 data-i18n="jrn_orders_summary">Tổng theo order</h2>
+      <p class="lead" id="lead"></p>
+      <div class="tablewrap"><table id="sum">
+        <thead><tr>
+          <th data-i18n="jrn_th_order">Order</th>
+          <th data-i18n="jrn_th_tracked">Phút khi đồng hồ chạy</th>
+          <th data-i18n="jrn_th_multi">Trong đó lúc mở nhiều order</th>
+          <th data-i18n="jrn_th_untracked">Phút làm khi đồng hồ tắt</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <h2 data-i18n="jrn_events">Sự kiện</h2>
+      <div class="tablewrap"><table id="ev">
+        <thead><tr>
+          <th data-i18n="jrn_th_start">Start time</th>
+          <th data-i18n="jrn_th_end">End time</th>
+          <th data-i18n="jrn_th_order">Order</th>
+          <th data-i18n="jrn_th_duration">Time</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p><button id="clear" class="ghost danger" data-i18n="jrn_btn_clear">Xóa nhật ký ngày này</button></p>
+    </details>
+  </main>
+  <script src="common.js"></script>
+  <script src="journal.js"></script>
+</body>
+</html>

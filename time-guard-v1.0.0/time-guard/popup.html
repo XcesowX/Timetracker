@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title data-i18n="pop_title">Time Guard</title><link rel="stylesheet" href="ui.css"></head>
+<body class="popup">
+  <section id="clock" class="clock unknown">
+    <div class="tm" id="tm">--:--:--</div>
+    <div class="state" id="state" data-i18n="pop_loading">Đang tải…</div>
+    <div class="sub" id="tracked"></div>
+    <button id="toggle" class="toggle" data-i18n="pop_btn_start">▶ Bật đồng hồ</button>
+    <p id="toggleErr" class="muted" hidden></p>
+  </section>
+  <div id="alerts"></div>
+  <section class="survey">
+    <button id="survey" class="ghost" data-i18n="pop_btn_survey_start">Bắt đầu làm survey</button>
+    <p id="surveyText" class="muted"></p>
+  </section>
+  <h2 data-i18n="pop_today_orders">Thời gian theo order hôm nay</h2>
+  <ul id="orders" class="orders"></ul>
+  <div class="actions">
+    <button id="openJournal" data-i18n="pop_btn_journal">Mở nhật ký</button>
+    <button id="check" class="ghost" data-i18n="pop_btn_check">Kiểm tra trang này</button>
+    <button id="openOptions" class="ghost" data-i18n="pop_btn_options">Setting</button>
+  </div>
+  <pre id="diag" hidden></pre>
+  <button id="copyDiag" class="ghost" hidden data-i18n="pop_btn_copy_diag">Sao chép kết quả kiểm tra</button>
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

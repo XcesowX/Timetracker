@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title data-i18n="opt_page_title">Cài đặt Time Guard</title><link rel="stylesheet" href="ui.css"></head>
+<body class="page">
+  <header class="bar">
+    <h1 data-i18n="opt_page_title">Cài đặt Time Guard</h1>
+    <div class="tools"><span id="msg"></span><button id="reset" class="ghost" data-i18n="opt_reset">Khôi phục mặc định</button><button id="save" data-i18n="opt_save">Lưu cài đặt</button></div>
+  </header>
+  <main>
+    <fieldset>
+      <legend data-i18n="opt_general_legend">Cài đặt chung</legend>
+      <div class="field">
+        <label for="language" data-i18n="opt_lang_label">Ngôn ngữ</label>
+        <select id="language">
+          <option value="vi" data-i18n="opt_lang_vi">Tiếng Việt</option>
+          <option value="en" data-i18n="opt_lang_en">English</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="opt_emp_legend">Emplanner</legend>
+      <div class="field"><label for="workUrl" data-i18n="opt_work_url">Trang có đồng hồ time tracker</label><input id="workUrl" type="url"></div>
+      <div class="field"><label for="scheduleUrl" data-i18n="opt_schedule_url">Trang Schedule (đọc thời gian tracked đã lưu)</label><input id="scheduleUrl" type="url"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="opt_order_legend">Nhận diện order</legend>
+      <div class="field">
+        <label for="orderUrlPatterns" data-i18n="opt_order_patterns">Mẫu dự phòng lấy mã order từ URL, mỗi dòng một mẫu</label>
+        <textarea id="orderUrlPatterns"></textarea>
+        <small data-i18n="opt_order_patterns_hint">Extension đọc số order từ tiêu đề FP Editor và từ trang order trước. Mẫu này chỉ dùng khi không đọc được. Phần trong ngoặc ( ) đầu tiên là mã order.</small>
+      </div>
+      <div class="field">
+        <label for="testUrl" data-i18n="opt_test_url">Thử với một URL</label>
+        <input id="testUrl" type="text" placeholder="Dán URL trang order vào đây" data-i18n-placeholder="opt_test_url_ph">
+        <small id="testOut"></small>
+      </div>
+      <div class="field">
+        <label for="extraSites" data-i18n="opt_extra_sites">Trang web tour khác (ngoài Emplanner), mỗi dòng một trang</label>
+        <textarea id="extraSites" placeholder="https://*.ten-mien.com/*" data-i18n-placeholder="opt_extra_sites_ph"></textarea>
+        <small data-i18n="opt_extra_sites_hint">Khi lưu, trình duyệt sẽ hỏi quyền truy cập các trang này.</small>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="opt_timing_legend">Thời gian</legend>
+      <div class="row">
+        <div class="field"><label for="idleSeconds" data-i18n="opt_idle_sec">Không thao tác bao lâu thì cảnh báo (giây)</label><input id="idleSeconds" type="number" min="30"></div>
+        <div class="field"><label for="graceSeconds" data-i18n="opt_grace_sec">Chờ phản hồi trước khi tự dừng (giây)</label><input id="graceSeconds" type="number" min="10"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="untrackedSeconds" data-i18n="opt_untracked_sec">Làm order khi đồng hồ tắt bao lâu thì nhắc (giây)</label><input id="untrackedSeconds" type="number" min="5"></div>
+        <div class="field"><label for="activeWindowSeconds" data-i18n="opt_active_window_sec">Sau thao tác cuối vẫn tính là đang làm (giây)</label><input id="activeWindowSeconds" type="number" min="15"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="noOrderSeconds" data-i18n="opt_no_order_sec">Đồng hồ chạy mà không làm order/survey bao lâu thì cảnh báo (giây)</label><input id="noOrderSeconds" type="number" min="30"></div>
+        <div class="field"><label for="noOrderGraceSeconds" data-i18n="opt_no_order_grace_sec">Sau cảnh báo đó, chờ bao lâu thì tự dừng (giây)</label><input id="noOrderGraceSeconds" type="number" min="30"></div>
+      </div>
+      <div class="field"><label for="surveyMaxMinutes" data-i18n="opt_survey_max_min">Chế độ survey tự tắt sau (phút)</label><input id="surveyMaxMinutes" type="number" min="5"></div>
+      <div class="field">
+        <label for="stopAction" data-i18n="opt_stop_action">Khi trainee không phản hồi</label>
+        <select id="stopAction">
+          <option value="pause" data-i18n="opt_stop_action_pause">Tạm dừng đồng hồ (Pause)</option>
+          <option value="finish" data-i18n="opt_stop_action_finish">Kết thúc đồng hồ (Finish)</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="opt_buttons_legend">Nút trên Emplanner</legend>
+      <small class="muted" data-i18n="opt_buttons_hint">Chữ hiển thị trên nút, cách nhau bằng dấu phẩy. Nếu nút chỉ có biểu tượng, điền bộ chọn CSS. Dùng nút "Kiểm tra trang này" trong popup để xem các nút extension thấy được.</small>
+      <div class="row">
+        <div class="field"><label for="l_start" data-i18n="opt_l_start">Nút Start</label><input id="l_start" type="text"></div>
+        <div class="field"><label for="s_start" data-i18n="opt_s_start">Bộ chọn CSS nút Start</label><input id="s_start" type="text"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="l_pause" data-i18n="opt_l_pause">Nút Pause</label><input id="l_pause" type="text"></div>
+        <div class="field"><label for="s_pause" data-i18n="opt_s_pause">Bộ chọn CSS nút Pause</label><input id="s_pause" type="text"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="l_finish" data-i18n="opt_l_finish">Nút Finish</label><input id="l_finish" type="text"></div>
+        <div class="field"><label for="s_finish" data-i18n="opt_s_finish">Bộ chọn CSS nút Finish</label><input id="s_finish" type="text"></div>
+      </div>
+      <div class="field">
+        <label for="s_widget" data-i18n="opt_s_widget">Bộ chọn CSS khối đồng hồ</label>
+        <input id="s_widget" type="text">
+        <small data-i18n="opt_s_widget_hint">Có khối này mà không có nút Pause thì tính là đồng hồ đang dừng.</small>
+      </div>
+      <div class="row">
+        <div class="field"><label for="l_finishConfirm" data-i18n="opt_l_finish_confirm">Nút xác nhận khi Finish</label><input id="l_finishConfirm" type="text"></div>
+        <div class="field"><label for="l_justLog" data-i18n="opt_l_just_log">Nút Just log time</label><input id="l_justLog" type="text"></div>
+      </div>
+    </fieldset>
+  </main>
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

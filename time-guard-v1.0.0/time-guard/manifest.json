@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "PQV Trainee Time Guard",
+  "short_name": "Time Guard",
+  "version": "1.0.0",
+  "description": "Nhắc trainee bật/tắt đồng hồ và log time đúng trên Emplanner. Chạy trên Chrome và Edge.",
+  "permissions": ["storage", "alarms", "notifications", "scripting", "offscreen"],
+  "host_permissions": ["https://*.emplanner.team/*"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://*.emplanner.team/*"],
+      "js": ["common.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_title": "Time Guard: mở nhật ký",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png" }
+  },
+  "options_page": "options.html",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}
